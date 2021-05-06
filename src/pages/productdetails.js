@@ -1,18 +1,16 @@
 import React, {useEffect, useState} from "react"
-import { useCartProd } from "../CartProdContext"
-import { useQuery } from "../query"
+import { useCartProd } from "../context/CartProdContext"
 import styles from "../css/style.module.css"
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import axios from "axios"
 import {FaMinus, FaPlus} from "react-icons/fa"
 import Loader from "react-loader-spinner"
-import { useCart } from "../cartContext"
-import { useAuth } from "./authcontextprovider"
-import { useToast } from "./toastContext"
+import { useCart } from "../context/cartContext"
+import { useAuth } from "../context/authcontextprovider"
+import { useToast } from "../context/toastContext"
 
 const ProductDetails = () => {
-    // const productId = useQuery().get("id")
-    const {dispatch, setShowLoader} = useCartProd()
+
     const {saveCart, setSaveCart} = useCart()
     const { isLogin } = useAuth()
     const { toast } = useToast()
