@@ -1,36 +1,18 @@
-import {useEffect, useState} from "react"
-import { useCart } from "../cartContext";
-import { useCartProd } from "../CartProdContext";
+
+import { useCart } from "../context/cartContext";
+import { useCartProd } from "../context/CartProdContext";
 import styles from "../css/style.module.css"
 import { CgCloseO } from "react-icons/cg"
 import axios from "axios";
 import Loader from "react-loader-spinner"
-import { useToast } from "./toastContext";
+import { useToast } from "../context/toastContext";
 
 export function Cart(){
 
-    const {showLoader, setShowLoader} = useCartProd();
+    const {showLoader} = useCartProd();
     const {saveCart, setSaveCart} = useCart()
     const {toast} = useToast()
-    // const [cart, setCart] = useState([])
-
-    // useEffect(() => {
-    //   try{
-    //     (async function(){
-    //       setShowLoader(true)
-    //       const {data} = await axios.get("https://e-commerce.virendrawadher.repl.co/cart")
-    //       console.log(data)
-    //       data.cart && setSaveCart(cart => saveCart.concat(data.cart))
-    //       setShowLoader(false)
-          
-    //     }
-    //     )() 
-        
-    //   }catch(error){
-    //     setShowLoader(false)
-    //     console.log(error)
-    //   }
-    // }, [])
+    
 
     const removeItem = async(cartP) => {
       const findRemoveItem = saveCart.find(cart => cart._id === cartP._id)
@@ -60,7 +42,7 @@ export function Cart(){
           {
             showLoader ? <Loader type = "Puff" color = "#EF4444" width = {100} height = {100} className = {styles.loader}/> : (
               saveCart.length === 0 ? 
-                <div>No product in cart</div> : 
+                <div style = {{fontSize: "2rem"}}>No product in cart</div> : 
                 <table className = {styles.tablecart}>
             <tr>
               <td></td>
