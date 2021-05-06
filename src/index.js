@@ -4,12 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 // import setupMockServer from "./api/server_mock"
-import {CartProdProvider} from "./CartProdContext"
+import {CartProdProvider} from "./context/CartProdContext"
 import { BrowserRouter as Router } from "react-router-dom"
-import { AuthProvider } from './pages/authcontextprovider';
-import { CartProvider } from './cartContext';
-import { ToastProvider } from './pages/toastContext';
-import { WishListProvider } from './pages/wishlistcontext';
+import { AuthProvider } from './context/authcontextprovider';
+import { CartProvider } from './context/cartContext';
+import { ToastProvider } from './context/toastContext';
+import { WishListProvider } from './context/wishlistcontext';
 // setupMockServer();
 
 
