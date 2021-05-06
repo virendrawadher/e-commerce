@@ -16,17 +16,17 @@ import { WishListProvider } from './pages/wishlistcontext';
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-    <AuthProvider>
-      <ToastProvider>
-        <CartProdProvider>
-          <CartProvider>
-            <WishListProvider>
-              <App />
-            </WishListProvider>
-          </CartProvider>
-        </CartProdProvider>
-      </ToastProvider>
-    </AuthProvider>
+      <AuthProvider>
+        <ToastProvider>
+          <CartProdProvider>
+            <CartProvider>
+              <WishListProvider>
+                <App />
+              </WishListProvider>
+            </CartProvider>
+          </CartProdProvider>
+        </ToastProvider>
+      </AuthProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
