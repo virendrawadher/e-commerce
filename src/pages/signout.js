@@ -1,10 +1,10 @@
 import React from "react"
 import styles from "../css/style.module.css"
-import { useAuth } from "./authcontextprovider"
+import { useAuth } from "../context/authcontextprovider"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
-const SignOutModal = () => {
+const SignOutModal = ({setUserModal}) => {
 
     const {setIsLogIn} = useAuth()
 
@@ -15,11 +15,13 @@ const SignOutModal = () => {
     }
 
     return(
-        <div className = {styles.usermodalcontainer}>
-            <div style = {{marginTop: "0.5rem"}}>
-                <Link to = "" className = {styles.useraccount}>My Account</Link>
+        <div className = {styles.modal} onClick = {() => setUserModal(false)}>
+            <div className = {styles.usermodalcontainer} onClick = {(e) => e.stopPropagation}>
+                <div style = {{marginTop: "0.5rem"}}>
+                    <Link to = "" className = {styles.useraccount}>My Account</Link>
+                </div>
+                <button onClick = {signOutHandler} className = {styles.signoutbtn}>Sign Out</button>
             </div>
-            <button onClick = {signOutHandler} className = {styles.signoutbtn}>Sign Out</button>
         </div>
     )
 
@@ -46,7 +48,7 @@ export const SignOut = () => {
             <div className = {styles.userlettercontainer} onClick = {signOutModalHandler}>
                 <span className = {styles.userletter}>{userletter}</span>
             </div>
-            { userModal && <SignOutModal/>}
+            { userModal && <SignOutModal setUserModal = {setUserModal}/>}
         </div>
     )
 }

@@ -29,29 +29,26 @@
     text-decoration: none;
 }
 
-.navhome, .navproduct{
+.navproduct{
     text-decoration: none;
     color: var(--icon-color);
     position: absolute;
-    left: 11rem;
+    right: 13rem;
     top: 0.85rem;
     font-weight: 500;
     /* font-size: 20px; */
-}
-
-.navproduct{
-    left: 65rem;
-    right: 0;
 }
 
 .navlogin, .navcart, .navwishlist{
     position: absolute;
     right: 1.5rem;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .navlogin{
     color: var(--icon-color);
+
 }
 
 .navcart{
@@ -82,9 +79,18 @@
     border: 2px solid var(--icon-color);
     border-radius: 50%;
     right: 4rem;
-    bottom: 0.5rem;
+    bottom: 0.3rem;
     background-color: var(--userbackground);
     cursor: pointer;
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0,0, 0, 0.5);
 }
 
 .usermodalcontainer{
@@ -408,10 +414,10 @@
     border-right: 2px solid;
     top: 0;
     padding: 0 1rem;
-    padding-top: 0.2rem;
+    padding-top: 0.5rem;
 }
 
-.cartbutton, .removewishlist{
+.cartbutton, .removewishlist, .signinbtn{
     float: left;
     margin-left: 12rem;
     margin-top: 2rem;
@@ -422,6 +428,11 @@
     border: none;
     color: var(--icon-color);
     cursor: pointer;
+}
+
+.signinbtn{
+    margin-left: 9rem;
+    width: 40%;
 }
 
 .cartbutton:focus, .removewishlist:focus{
@@ -475,7 +486,7 @@
 } */
 
 .removefromcart, .removeFromWishList{
-    font-size: 2rem;
+    font-size: 1rem;
     padding-right: 1rem;
     color: var(--primary-color);
     cursor: pointer;
@@ -504,4 +515,31 @@
     color: var(--text-color);
     top: 1rem;
     right: 1rem;
+}
+
+.signinmodal{
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+
+}
+
+.signincontent{
+    width: 500px;
+    background-color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0px 15px 20px var(--icon-color);
+
+}
+
+.signindata{
+    display: flex;
+    flex-direction: column;
 }

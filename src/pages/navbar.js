@@ -1,20 +1,20 @@
 import React from "react";
-import {NavLink, Route, Routes} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 import {FaIndent} from "react-icons/fa"
 import styles from "../css/style.module.css"
 import { FaLock, FaShoppingCart, FaHeart } from "react-icons/fa"
-import { useCartProd } from "../CartProdContext";
-import { useAuth } from "./authcontextprovider";
+import { useAuth } from "../context/authcontextprovider";
 import { SignOut } from "./signout"
-import { useCart } from "../cartContext";
-import { useWishList } from "./wishlistcontext";
-import { useToast } from "./toastContext";
+import { useCart } from "../context/cartContext";
+import { useWishList } from "../context/wishlistcontext";
+import { useToast } from "../context/toastContext";
+import SignIn from "./signin";
 
 
 export function NavBar(){
 
-    const {state} = useCartProd()
-    const {isLogin} = useAuth()
+
+    const { isLogin, modal } = useAuth()
     const {saveCart} = useCart()
     const {wishList} = useWishList()
     const { toast } = useToast()
@@ -46,14 +46,16 @@ export function NavBar(){
                         {isLogin && <div className = {styles.wishlistlength}> <span className = {styles.wishlistnumber}>{wishList.length}</span></div>} 
                     </NavLink>
                     {
-                        isLogin ? <SignOut/> : 
-                        <NavLink to = "/login" className = {styles.navlogin}> 
-                            <FaLock className = {styles.loginicon}/>
-                            <span className = {styles.login}>Login</span>
-                        </NavLink>
+                        isLogin ? <SignOut/> :  
+                            <NavLink to = "/login" className = {styles.navlogin}>
+                                <FaLock className = {styles.loginicon}/>
+                                <span className = {styles.login}>Login</span>
+                            </NavLink>
+                        
                     }
                 </nav>
             </header>
+            {modal && <SignIn/>}
         </div>
     )
 }

@@ -1,15 +1,13 @@
-import { useCartProd, getPriceRangeData, getSortedData } from "../CartProdContext";
+import { useCartProd, getPriceRangeData, getSortedData } from "..//context/CartProdContext";
 import {Link, NavLink, useParams} from "react-router-dom"
 import { useEffect, useState } from "react"
-import CategoryApi from "../api/categoryapi";
-import ProductApi from "../api/productapi";
 import styles from "../css/style.module.css"
 import { FaHeart } from "react-icons/fa" 
-import { useAuth } from "./authcontextprovider";
+import { useAuth } from "../context/authcontextprovider";
 import Loader from "react-loader-spinner";
 import axios from "axios"
-import { useWishList } from "./wishlistcontext";
-import { useToast } from "./toastContext";
+import { useWishList } from "../context/wishlistcontext";
+import { useToast } from "../context/toastContext";
 
 export function Product() {
 
@@ -21,16 +19,6 @@ export function Product() {
     const {isLogin} = useAuth();
     const [products, setProducts] = useState([])
     const {toast} = useToast()
-
-    // useEffect(() => {
-    //   CategoryApi()
-    //   .then(data => console.log(data))
-    //   .catch(error => console.log(error))
-
-    //   ProductApi()
-    //   .then(data => dispatch({type: "PRODUCT", data}))
-    //   .catch(error => console.log(error))
-    // }, [])
 
     useEffect(() => {
       try{
