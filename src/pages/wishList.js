@@ -1,13 +1,16 @@
-import { useEffect } from "react"
-import {useWishList} from "./wishlistcontext"
+
+import {useWishList} from "../context/wishlistcontext"
 import axios from "axios"
 import styles from "../css/style.module.css"
-import { useToast } from "./toastContext"
+import { useToast } from "../context/toastContext"
 import { CgCloseO } from "react-icons/cg"
+import Loader from "react-loader-spinner"
+import { useCartProd } from "../context/CartProdContext"
 
 export function WishList(props){
 
     const {wishList, setWishList} = useWishList()
+    const { showLoader } = useCartProd()
     const {toast} = useToast() 
 
     const removeFromWishList = async(product) => {
@@ -32,11 +35,14 @@ export function WishList(props){
 
     return (
         <div>
-          <div className = {styles.productcontainer} style = {{margin: "0 auto", width: "50%"}}>
+        {
+          showLoader ? <Loader type = "Puff" width = {100} height = {100} color = "#EF4444" className = {styles.loader}/> : 
+        
+          <div className = {styles.productcontainer} style = {{margin: "0 auto", justifyContent: "center", fontSize: "2rem"}}>
           {
-            wishList.length === 0 ? <div>You have not wishlisted any product</div> : 
+            wishList.length === 0 ? <div>Wishlist is empty</div> : 
             <div>
-              <h1>My WishList</h1>
+              <h5>My WishList</h5>
               {
                 wishList.map((product) => {
                     return (
@@ -58,6 +64,7 @@ export function WishList(props){
           }
             
           </div>
+        }
         </div>
     )
   }
